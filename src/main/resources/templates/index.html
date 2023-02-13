@@ -1,0 +1,38 @@
+<!-- dkk -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label th:text="${msg}"></label>
+<table border="1" style="margin: auto"; width="600px" cellspacing="0">
+        <label th:text="${msg}"></label>
+    <tr>
+        <th>编号</th>
+        <th>用户</th>
+        <th>密码</th>
+        <th>类型</th>
+        <th>备注</th>
+        <th>操作</th>
+    </tr>
+
+    <tr th:each="user:${UserAll}" style="text-align: center">
+<td th:text="${user.uCode}"></td>
+        <td th:text="${user.uName}"></td>
+        <td th:text="${user.uPwd}"></td>
+        <td th:if="${user.uType == 1}" >管理员</td>
+        <td th:if="${user.uType == 0}" >普通用户</td>
+        <td th:text="${user.uMemo}"></td>
+        <td>
+            <a th:href="@{'/toAdd?uType='+${session.loginUser.uType}}">新增</a>
+            <a th:if="${session.loginUser.uType == 1 || user.uCode == session.loginUser.uCode} " th:href="@{'/modify?uCode='+${user.uCode}}">修改</a>
+            <a th:if="${session.loginUser.uType == 1 || user.uCode == session.loginUser.uCode} " th:href="@{'/delete?uCode='+${user.uCode}}">删除</a>
+            <button>详情</button>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
