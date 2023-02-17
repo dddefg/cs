@@ -1,20 +1,20 @@
 package com.dk.cs.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.dk.cs.pojo.ShoppingCart;
 import com.dk.cs.pojo.UserTable;
+
+import java.util.List;
 
 /**
  * 板凳宽宽
  */
 public interface UserService extends IService<UserTable> {
-    UserTable getUserByName(String uName);
 
-    void addUser(UserTable userTable);
+    UserTable getUserByName(String userName);
 
-    UserTable getUserByuCode(int uCode);
+    boolean addUser(UserTable userTable);
 
-    void upUser(UserTable userTable);
+    boolean deleteUser(UserTable a);
 
-
-    void deleteUser(UserTable a);
 }

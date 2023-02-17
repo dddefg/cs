@@ -6,14 +6,16 @@ import lombok.NoArgsConstructor;
 
 /**
  * 板凳宽宽
+ * 购物车
  */
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class UserTable {
+public class ShoppingCart {
     private String userName;
-    private String passWord;
-    private String userNick;
-    private String userGender;
-    private Integer phone;
+    private String goodsName;
+    private double goodsPrice;
+    private Integer goodsNum;
+    private String goodsId;
+    private String sellerName;
 }

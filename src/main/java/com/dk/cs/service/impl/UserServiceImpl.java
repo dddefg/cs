@@ -15,30 +15,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserTable> implemen
     @Autowired
     UserMapper userMapper;
 
+
     @Override
-    public UserTable getUserByName(String uName) {
-        return userMapper.getUserByName(uName);
+    public UserTable getUserByName(String userName) {
+        return userMapper.getUserByName(userName);
     }
 
     @Override
-    public void addUser(UserTable userTable) {
-        userMapper.addUser(userTable);
+    public boolean addUser(UserTable userTable) {
+        return userMapper.addUser(userTable);
     }
 
     @Override
-    public UserTable getUserByuCode(int uCode) {
-        return userMapper.getUserByuCode(uCode);
+    public boolean deleteUser(UserTable a) {
+        return userMapper.deleteUser(a);
     }
-
-    @Override
-    public void upUser(UserTable userTable) {
-        userMapper.upUser(userTable);
-    }
-
-    @Override
-    public void deleteUser(UserTable a) {
-        userMapper.deleteUser(a);
-    }
-
-
 }

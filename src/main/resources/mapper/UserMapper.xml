@@ -3,24 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dk.cs.mapper.UserMapper">
-    <insert id="addUser" parameterType="com.dk.cs.pojo.UserTable">
-        insert into user_table (u_name,u_pwd,u_type,u_memo) values
-        (#{uName},#{uPwd},#{uType},#{uMemo});
+    <insert id="addUser">
+        insert into user_table(user_name,pass_word,user_nick,user_gender,phone)
+        values(#{userName},#{passWord},#{userNick},#{userGender},#{phone})
     </insert>
-    <update id="upUser">
-        update user_table set u_name = #{uName},u_pwd = #{uPwd},u_type = #{uType},u_memo = #{uMemo} where u_code = #{uCode}
-    </update>
     <delete id="deleteUser">
-        delete from user_table where u_code = #{uCode}
+delete from user_table where user_name = #{userName}
     </delete>
 
-    <!-- mapper接口类名和映射文件的类名保持一致
-         mapper接口的方法名要和映射文件sql的ID保持一致
-     -->
     <select id="getUserByName" resultType="com.dk.cs.pojo.UserTable">
-        select * from user_table where u_name =#{uName}
-    </select>
-    <select id="getUserByuCode" resultType="com.dk.cs.pojo.UserTable">
-        select * from user_table where u_code =#{uCode}
+        select * from user_table where user_name = #{userName}
     </select>
 </mapper>

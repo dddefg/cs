@@ -1,6 +1,8 @@
 package com.dk.cs;
 
+import com.dk.cs.pojo.ShoppingCart;
 import com.dk.cs.pojo.UserTable;
+import com.dk.cs.service.ShoppingCartService;
 import com.dk.cs.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +16,12 @@ class CsApplicationTests {
 
     @Autowired
     UserService userService;
+    @Autowired
+    ShoppingCartService shoppingCartService;
     @Test
     void contextLoads() {
-        UserTable a = new UserTable(5, "12113", "123", 1, "a");
-//        userService.upUser(a);
-userService.deleteUser(a);
+        List<ShoppingCart> admin = shoppingCartService.shoppingCartById("admin");
+        System.out.println(admin);
 
     }
 

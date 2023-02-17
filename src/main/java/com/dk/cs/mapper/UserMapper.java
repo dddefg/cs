@@ -9,14 +9,10 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper extends BaseMapper<UserTable> {
-    UserTable getUserByName(String uName);
 
-    void addUser(UserTable userTable);
+    UserTable getUserByName(String userName);
 
-    UserTable getUserByuCode(int uCode);
+    boolean addUser(UserTable userTable);
 
-    void upUser(UserTable userTable);
-
-
-    void deleteUser(UserTable a);
+    boolean deleteUser(UserTable a);
 }
