@@ -53,18 +53,13 @@ public class ControllerUser {
         return b;
     }
 
-    @RequestMapping(value = "/userDelete/{userName}")
-    public boolean deleteUserById(@PathVariable("userName") String userName,
-                                  HttpSession session){
-        //下查看登录的用户名字是否跟被删除的一样，只能删除自己
+    @RequestMapping(value = "/userDelete")
+    public boolean deleteUserById(HttpSession session){
         UserTable loginUser = (UserTable) session.getAttribute("loginUser");
-        if (loginUser.getUserName().equals(userName)) {
-            UserTable a = new UserTable(userName, "", "", "", 0);
-            boolean b = userService.deleteUser(a);
-            if (b){ //注销后退出登录
-                session.removeAttribute("loginUser");
-            }
-            return b;
+        boolean b = userService.deleteUser(loginUser);
+        if (b) {
+            session.removeAttribute("loginUser");
+            return true;
         }
         return false;
     }
